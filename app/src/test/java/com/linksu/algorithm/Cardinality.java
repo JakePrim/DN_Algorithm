@@ -57,6 +57,7 @@ public class Cardinality {
         for (int i = 0; i < linkedLists.length; i++) {
             list.addAll(linkedLists[i]);
         }
+
         //对花色进行分组 假设只有三种花色
         LinkedList[] suitList = new LinkedList[3];
         for (int i = 0; i < suitList.length; i++) {
