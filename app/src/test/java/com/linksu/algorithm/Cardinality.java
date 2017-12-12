@@ -34,6 +34,41 @@ public class Cardinality {
         System.out.println(list);
     }
 
+    @Test
+    public void test2() {
+        int[][] a = table(3);
+        for (int i = 0; i < a.length; i++) {
+            for (int j = 0; j < a[i].length; j++) {
+                System.out.print(a[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+
+    private static int[][] table(int k) {
+        int n = 1 << k;//k >>> 1 除以 2   1<<K 2次方
+        int[][] table = new int[n][n];
+        //将第一排填好
+        for (int i = 0; i < n; i++) {
+            table[0][i] = i + 1;
+        }
+        //开始使用分治法进行数据填写
+        for (int r = 1; r < n; r = r * 2) {//表示拷贝的轮数，和人数的关系
+            for (int i = 0; i < n; i = i + r * 2) {//用来表示人数不同的情况下列坐标的位置控制
+                copy(table, 0, i, r, r + i, r);//左上到右下
+                copy(table, 0, r + i, r, i, r);//右下到左上
+            }
+        }
+        return table;
+    }
+
+    private static void copy(int[][] array, int formx, int formy, int tox, int toy, int r) {
+        for (int i = 0; i < r; i++) {
+            for (int j = 0; j < r; j++) {
+                array[tox + i][toy + j] = array[formx + i][formy + j];
+            }
+        }
+    }
 
     /**
      * 将从后台得到的麻将数据，进行排序
@@ -57,6 +92,7 @@ public class Cardinality {
         for (int i = 0; i < linkedLists.length; i++) {
             list.addAll(linkedLists[i]);
         }
+
         //对花色进行分组 假设只有三种花色
         LinkedList[] suitList = new LinkedList[3];
         for (int i = 0; i < suitList.length; i++) {
@@ -74,5 +110,62 @@ public class Cardinality {
             list.addAll(suitList[i]);
         }
 
+    }
+
+    @Test
+    public void textInsterSort() {
+        int[] array = new int[]{23, 78, 45, 8, 32, 56};
+        insterSort(array);
+        for (int i = 0; i < array.length; i++) {
+            System.out.print(array[i] + " ");
+        }
+    }
+
+    /**
+     * 插入排序
+     *
+     * @param array
+     */
+    private static void insterSort(int[] array) {
+        for (int i = 1; i < array.length; i++) {
+            int j = i;
+            int trage = array[i];
+            while (j > 0 && trage < array[j - 1]) {
+                array[j] = array[j - 1];
+                j--;
+            }
+            array[j] = trage;
+        }
+    }
+
+    @Test
+    public void testXier() {
+        int[] array = new int[]{7, 19, 24, 13, 31, 8, 82, 18, 44, 63, 5, 29};
+        xierSort(array, 6);
+        xierSort(array, 3);
+        xierSort(array, 1);
+        for (int i = 0; i < array.length; i++) {
+            System.out.print(array[i] + " ");
+        }
+    }
+
+    /**
+     * 希尔排序
+     *
+     * @param array
+     * @param step
+     */
+    private static void xierSort(int[] array, int step) {
+        for (int k = 0; k < step; k++) {
+            for (int i = k + step; i < array.length; i = i + step) {
+                int j = i;
+                int trage = array[i];//想插入的目标数据
+                while (j > step - 1 && trage < array[j - step]) {
+                    array[j] = array[j - step];
+                    j = j - step;
+                }
+                array[j] = trage;
+            }
+        }
     }
 }
