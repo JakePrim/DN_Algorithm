@@ -22,6 +22,16 @@ public class Les12 {
     }
 
     /**
+     * 归并排序
+     * @param array
+     * @param left
+     * @param right
+     */
+    private static void mergeStor(int[] array,int left,int right){
+
+    }
+
+    /**
      * 快速排序
      * @param array
      * @param begin
