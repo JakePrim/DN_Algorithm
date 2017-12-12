@@ -138,7 +138,34 @@ public class Cardinality {
         }
     }
 
-    private static void xierSort(int[] array, int step) {
+    @Test
+    public void testXier() {
+        int[] array = new int[]{7, 19, 24, 13, 31, 8, 82, 18, 44, 63, 5, 29};
+        xierSort(array, 6);
+        xierSort(array, 3);
+        xierSort(array, 1);
+        for (int i = 0; i < array.length; i++) {
+            System.out.print(array[i] + " ");
+        }
+    }
 
+    /**
+     * 希尔排序
+     *
+     * @param array
+     * @param step
+     */
+    private static void xierSort(int[] array, int step) {
+        for (int k = 0; k < step; k++) {
+            for (int i = k + step; i < array.length; i = i + step) {
+                int j = i;
+                int trage = array[i];//想插入的目标数据
+                while (j > step - 1 && trage < array[j - step]) {
+                    array[j] = array[j - step];
+                    j = j - step;
+                }
+                array[j] = trage;
+            }
+        }
     }
 }
