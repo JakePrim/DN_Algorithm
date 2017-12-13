@@ -45,8 +45,15 @@ public class Les15 {
         if (kLeft >= n && kRight >= n) {
             return;
         }
-        int kLeftValue = array[kLeft]; //左树节点的值
-        int kRightValue = array[kRight];//右树节点的值
+        int kLeftValue = Integer.MAX_VALUE;
+
+        int kRightValue = Integer.MAX_VALUE;
+        if (kLeft < n) {
+            kLeftValue = array[kLeft]; //左树节点的值
+        }
+        if (kRight < n) {
+            kRightValue = array[kRight];//右树节点的值
+        }
 
         //开始三个节点比大小
         if (array[k] < kLeftValue && array[k] < kRightValue) {
