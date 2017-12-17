@@ -17,6 +17,7 @@ public class Node implements Comparable<Node> {
         coord = new Coord(x, y);
     }
 
+
     public Node(int g, int h, Coord coord, Node parent) {
         this.g = g;
         this.h = h;
