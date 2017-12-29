@@ -14,6 +14,7 @@ public class LinkedList<E> {
 
     int size;
 
+
     /**
      * 向链表的尾部添加一个元素
      *
