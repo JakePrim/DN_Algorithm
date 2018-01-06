@@ -133,4 +133,21 @@ public class SingleList<E> {
         }
         return newNode;
     }
+
+    /**
+     * 单链表的逆置
+     * 第一种方法实现
+     */
+    public void inverse() {
+        Node<E> l = this.last;
+        Node<E> curr = this.frist;
+        Node<E> reve = null;
+        while (curr != null) {
+            Node<E> temp = curr;
+            curr = curr.next;
+            temp.next = reve;
+            reve = temp;
+        }
+        frist = reve;
+    }
 }

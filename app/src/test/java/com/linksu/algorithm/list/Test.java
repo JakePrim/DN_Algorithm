@@ -29,7 +29,8 @@ public class Test {
 //        singleList.add(8,5);
 //        singleList.add(7,2);
 //        singleList.remove(6);
-        singleList.remove(3);
+//        singleList.remove(3);
+        singleList.inverse();
         for (int i = 0; i < singleList.size; i++) {
             System.out.print(singleList.get(i) + " ");
         }
