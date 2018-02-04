@@ -136,7 +136,7 @@ public class SingleList<E> {
 
     /**
      * 单链表的逆置
-     * 第一种方法实现
+     * 第一种方法实现 循环
      */
     public void inverse() {
         Node<E> l = this.last;
@@ -149,5 +149,25 @@ public class SingleList<E> {
             reve = temp;
         }
         frist = reve;
+    }
+
+    /**
+     * 单链的逆置 递归方式实现
+     *
+     * @param head
+     * @return
+     */
+    public Node<E> reverse(Node<E> head) {
+        if (head == null || head.next == null) {
+            return head;
+        }
+        Node<E> toil = reverse(head.next);
+        head.next.next = head;
+        head.next = null;
+        return toil;
+    }
+
+    public void transterReverse() {
+        this.frist = reverse(this.frist);
     }
 }

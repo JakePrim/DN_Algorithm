@@ -30,7 +30,8 @@ public class Test {
 //        singleList.add(7,2);
 //        singleList.remove(6);
 //        singleList.remove(3);
-        singleList.inverse();
+//        singleList.inverse();
+        singleList.transterReverse();
         for (int i = 0; i < singleList.size; i++) {
             System.out.print(singleList.get(i) + " ");
         }
